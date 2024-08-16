@@ -3,3 +3,6 @@
 ################################################################################
 
 /SecureResource/.vs/SecureResource/v17
+/SecureResource/.vs/SecureResource
+/SecureResource/Movies.Api/bin/Debug/net6.0
+/SecureResource/Movies.Api/obj
