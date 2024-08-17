@@ -14,10 +14,10 @@ public class Startup
         services.AddControllersWithViews();
         services.AddIdentityServer()
             .AddInMemoryClients(Config.Clients)
-            //.AddInMemoryIdentityResources(Config.IdentityResources)
-            //.AddInMemoryApiResources(Config.apiResources)
+            .AddInMemoryIdentityResources(Config.IdentityResources)
+            //.AddInMemoryApiResources(Config.ApiResources)
             .AddInMemoryApiScopes(Config.ApiScopes)
-            //.AddTestUsers(Config.TestUsers)
+            .AddTestUsers(Config.TestUsers)
             //.AddInMemoryPersistedGrants() // Adds in-memory store for persisted grants
             .AddDeveloperSigningCredential();
     }
@@ -31,7 +31,7 @@ public class Startup
         app.UseStaticFiles();
         app.UseRouting();
         app.UseIdentityServer();
-
+        app.UseAuthorization();
         //app.UseEndpoints(endpoints =>
         //{
         //    endpoints.MapGet("/", async context =>
