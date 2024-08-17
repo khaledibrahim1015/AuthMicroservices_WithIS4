@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
+using Movies.Client.ApiServices;
 
 namespace Movies.Client
 {
@@ -14,6 +15,8 @@ namespace Movies.Client
 
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddScoped<IMovieApiService, MovieApiService>();
 
             services.AddControllersWithViews();
             services.AddAuthentication(options =>

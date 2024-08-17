@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
+using Movies.Client.ApiServices;
 using Movies.Client.Models;
 using System.Diagnostics;
 
@@ -12,22 +13,18 @@ namespace Movies.Client.Controllers
     [Authorize]
     public class MoviesController : Controller
     {
-        //private readonly MoviesClientContext _context;
+        private readonly IMovieApiService _movieApiService;
 
-        //public MoviesController(MoviesClientContext context)
-        //{
-        //    _context = context;
-        //}
-
+        public MoviesController(IMovieApiService movieApiService)
+        {
+            _movieApiService = movieApiService ?? throw new ArgumentNullException(nameof(movieApiService));
+        }
         // GET: Movies
         public async Task<IActionResult> Index()
         {
             await LogTokenAndClaims();
-            return View(new Movie());
+            return View(await _movieApiService.GetMovies());
 
-            //return _context.Movie != null ? 
-            //            View(await _context.Movie.ToListAsync()) :
-            //            Problem("Entity set 'MoviesClientContext.Movie'  is null.");
         }
         public async Task LogTokenAndClaims()
         {
