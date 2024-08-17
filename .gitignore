@@ -8,3 +8,5 @@
 /SecureResource/Movies.Api/obj
 /SecureResource/IdentityServer/bin/Debug/net6.0
 /SecureResource/IdentityServer/obj
+/SecureResource/Movies.Client/bin/Debug/net6.0
+/SecureResource/Movies.Client/obj
