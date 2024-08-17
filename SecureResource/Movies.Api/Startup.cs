@@ -28,6 +28,22 @@ public class Startup
             option.UseInMemoryDatabase("MoviesDb");
         });
 
+        //  add auth 
+        services.AddAuthentication("Bearer")
+            .AddJwtBearer("Bearer", options =>
+            {
+                options.Authority = "https://localhost:5005";
+                options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters()
+                {
+                    ValidateAudience = false
+                };
+            });
+
+        //// add claims based authorization 
+        //services.AddAuthorization(option =>
+        //{
+        //    option.AddPolicy("ClientIdPloicy", configurePloicy => configurePloicy.RequireClaim("client_id", "movieClient"));
+        //});
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
