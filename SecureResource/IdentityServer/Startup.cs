@@ -11,6 +11,7 @@ public class Startup
 
     public void ConfigureServices(IServiceCollection services)
     {
+        services.AddControllersWithViews();
         services.AddIdentityServer()
             .AddInMemoryClients(Config.Clients)
             //.AddInMemoryIdentityResources(Config.IdentityResources)
@@ -27,15 +28,23 @@ public class Startup
         {
             app.UseDeveloperExceptionPage();
         }
-
+        app.UseStaticFiles();
         app.UseRouting();
         app.UseIdentityServer();
 
+        //app.UseEndpoints(endpoints =>
+        //{
+        //    endpoints.MapGet("/", async context =>
+        //    {
+        //        await context.Response.WriteAsync("hello from identity");
+        //    });
+        //});
+
         app.UseEndpoints(endpoints =>
         {
-            endpoints.MapGet("/", async context =>
+            app.UseEndpoints(endpoints =>
             {
-                await context.Response.WriteAsync("hello from identity");
+                endpoints.MapDefaultControllerRoute();
             });
         });
     }
