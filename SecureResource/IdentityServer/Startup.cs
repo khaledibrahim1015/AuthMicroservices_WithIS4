@@ -13,10 +13,10 @@ public class Startup
     {
         services.AddIdentityServer()
             .AddInMemoryClients(Config.Clients)
-            .AddInMemoryIdentityResources(Config.IdentityResources)
-            .AddInMemoryApiResources(Config.apiResources)
+            //.AddInMemoryIdentityResources(Config.IdentityResources)
+            //.AddInMemoryApiResources(Config.apiResources)
             .AddInMemoryApiScopes(Config.ApiScopes)
-            .AddTestUsers(Config.TestUsers)
+            //.AddTestUsers(Config.TestUsers)
             //.AddInMemoryPersistedGrants() // Adds in-memory store for persisted grants
             .AddDeveloperSigningCredential();
     }
