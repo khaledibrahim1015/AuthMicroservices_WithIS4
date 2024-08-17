@@ -39,11 +39,11 @@ public class Startup
                 };
             });
 
-        //// add claims based authorization 
-        //services.AddAuthorization(option =>
-        //{
-        //    option.AddPolicy("ClientIdPloicy", configurePloicy => configurePloicy.RequireClaim("client_id", "movieClient"));
-        //});
+        // add claims based authorization 
+        services.AddAuthorization(option =>
+        {
+            option.AddPolicy("ClientIdPloicy", configurePloicy => configurePloicy.RequireClaim("client_id", "movieClient"));
+        });
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
